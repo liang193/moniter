@@ -95,7 +95,7 @@ class WebMonitor:
 
                 try:
                     if article_time_str:
-                        clean_time = article_time.split('+')[0].strip()
+                        clean_time = article_time_str.split('+')[0].strip()
                         dt = datetime.strptime(clean_time, '%a, %d %b %Y %H:%M:%S')
                         # 按你要求：过滤掉超过设定天数的文章
                         if dt < threshold_date:
