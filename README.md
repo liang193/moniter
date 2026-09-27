@@ -1,4 +1,5 @@
 # moniter
+import os
 import streamlit as st
 import requests
 from bs4 import BeautifulSoup
@@ -7,8 +8,8 @@ import re
 import xml.etree.ElementTree as ET
 
 # ================= 配置区 =================
-# 你刚刚提供的真实 DeepSeek API Key
-API_KEY = "sk-547ca0352aab49b6a75fd75a6f3e43a5"
+# 不再硬编码密钥，请通过环境变量 DEEPSEEK_API_KEY 提供
+API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 
 # DeepSeek 的专属配置
 API_URL = "https://api.deepseek.com/chat/completions"
@@ -94,7 +95,7 @@ class WebMonitor:
 
                 try:
                     if article_time_str:
-                        clean_time = article_time_str.split('+')[0].strip()
+                        clean_time = article_time.split('+')[0].strip()
                         dt = datetime.strptime(clean_time, '%a, %d %b %Y %H:%M:%S')
                         # 按你要求：过滤掉超过设定天数的文章
                         if dt < threshold_date:
