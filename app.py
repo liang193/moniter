@@ -14,7 +14,8 @@ import re
 from collections import defaultdict
 
 # ================= 配置区 =================
-API_KEY = "sk-75ef6c3357db4ce49284f8534b119006"
+# 不再硬编码密钥，请通过环境变量 DEEPSEEK_API_KEY 提供
+API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 API_URL = "https://api.deepseek.com/chat/completions"
 MODEL_NAME = "deepseek-chat"
 # ==========================================
